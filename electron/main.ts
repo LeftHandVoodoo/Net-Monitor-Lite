@@ -15,12 +15,12 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 280,
-    height: 110,
-    minWidth: 280,
-    minHeight: 110,
-    maxWidth: 800,
-    maxHeight: 600,
+    width: 400,
+    height: 200,
+    minWidth: 350,
+    minHeight: 180,
+    maxWidth: 1000,
+    maxHeight: 800,
     frame: false,
     transparent: true,
     resizable: true,
@@ -62,9 +62,9 @@ ipcMain.on('toggle-always-on-top', () => {
 ipcMain.on('set-window-size', (_event, expanded: boolean) => {
   if (mainWindow) {
     if (expanded) {
-      mainWindow.setSize(300, 320, true) // Expanded size with animation
+      mainWindow.setSize(450, 420, true) // Expanded size with animation
     } else {
-      mainWindow.setSize(280, 110, true) // Compact size with animation
+      mainWindow.setSize(400, 200, true) // Compact size with animation
     }
   }
 })

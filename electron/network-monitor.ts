@@ -10,7 +10,7 @@ export class NetworkMonitor {
   /**
    * Start monitoring network throughput
    */
-  start(callback: (stats: NetworkStats) => void, intervalMs: number = 1000): void {
+  start(callback: (stats: NetworkStats) => void, intervalMs: number = 250): void {
     // Use Windows netstat / typeperf for accurate byte counters
     this.pollWindowsNetworkStats(callback, intervalMs)
   }

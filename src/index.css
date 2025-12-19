@@ -7,26 +7,26 @@
 }
 
 :root {
-  /* Color palette */
-  --bg-glass: rgba(20, 20, 30, 0.85);
-  --bg-glass-lighter: rgba(40, 40, 55, 0.6);
-  --border-glass: rgba(255, 255, 255, 0.1);
-  --text-primary: rgba(255, 255, 255, 0.95);
-  --text-secondary: rgba(255, 255, 255, 0.5);
-
-  /* Download gradient - cyan/blue */
-  --download-start: #00d4ff;
-  --download-end: #0099cc;
-  --download-glow: rgba(0, 212, 255, 0.4);
-
-  /* Upload gradient - magenta/pink */
-  --upload-start: #ff00ff;
-  --upload-end: #cc0099;
-  --upload-glow: rgba(255, 0, 255, 0.4);
-
-  /* Sizing */
-  --bar-height: 18px;
-  --border-radius: 8px;
+  /* Color palette - Gold & Brown Theme */
+  --bg-glass: rgba(30, 20, 10, 0.9);
+  --bg-glass-lighter: rgba(60, 45, 30, 0.7);
+  --border-glass: rgba(212, 175, 55, 0.3);
+  --text-primary: rgba(255, 235, 205, 0.98);
+  --text-secondary: rgba(212, 175, 55, 0.8);
+  
+  /* Download gradient - Gold */
+  --download-start: #FFD700;
+  --download-end: #DAA520;
+  --download-glow: rgba(255, 215, 0, 0.5);
+  
+  /* Upload gradient - Bronze/Copper */
+  --upload-start: #CD7F32;
+  --upload-end: #8B4513;
+  --upload-glow: rgba(205, 127, 50, 0.5);
+  
+  /* Sizing - Larger */
+  --bar-height: 28px;
+  --border-radius: 10px;
 }
 
 html,
@@ -34,9 +34,19 @@ body {
   overflow: hidden;
   background: transparent;
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--text-primary);
   user-select: none;
+}
+
+/* App container size variants */
+.app-container.compact {
+  min-height: 180px;
+}
+
+.app-container.expanded {
+  min-height: 420px;
+  transition: min-height 0.3s ease;
 }
 
 /* Main container with glassmorphism */
@@ -51,6 +61,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 /* Draggable title bar */
@@ -58,71 +69,77 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 12px;
+  background: rgba(212, 175, 55, 0.08);
   border-bottom: 1px solid var(--border-glass);
   -webkit-app-region: drag;
 }
 
 .title {
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--text-secondary);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 .window-controls {
   display: flex;
-  gap: 4px;
+  gap: 6px;
   -webkit-app-region: no-drag;
 }
 
 .control-btn {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(212, 175, 55, 0.2);
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .control-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(212, 175, 55, 0.4);
   color: var(--text-primary);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
 }
 
 .control-btn.close:hover {
-  background: #ff5f57;
+  background: #B8860B;
   color: #fff;
+  box-shadow: 0 0 15px rgba(184, 134, 11, 0.6);
 }
 
 .control-btn.minimize:hover {
-  background: #febc2e;
-  color: #333;
+  background: #DAA520;
+  color: #000;
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.6);
 }
 
 .control-btn.expand {
-  background: rgba(100, 200, 255, 0.15);
+  background: rgba(255, 215, 0, 0.2);
 }
 
 .control-btn.expand:hover {
-  background: rgba(100, 200, 255, 0.3);
+  background: rgba(255, 215, 0, 0.4);
   color: var(--text-primary);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
 .control-btn.expand.expanded {
-  background: rgba(255, 150, 100, 0.15);
+  background: rgba(205, 127, 50, 0.2);
 }
 
 .control-btn.expand.expanded:hover {
-  background: rgba(255, 150, 100, 0.3);
+  background: rgba(205, 127, 50, 0.4);
+  box-shadow: 0 0 15px rgba(205, 127, 50, 0.4);
 }
 
 /* Bars container */
@@ -131,30 +148,33 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
-  padding: 8px 10px;
+  gap: 14px;
+  padding: 14px 14px 20px 14px;
 }
 
 /* Individual throughput bar */
 .throughput-bar {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .throughput-bar .bar-label {
-  font-size: 10px;
-  font-weight: 600;
-  width: 16px;
-  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  width: auto;
+  text-align: left;
+  margin-bottom: 2px;
 }
 
 .throughput-bar.download .bar-label {
-  color: var(--download-start);
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 .throughput-bar.upload .bar-label {
-  color: var(--upload-start);
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 /* Bar track (background) */
@@ -195,13 +215,13 @@ body {
 /* Value display */
 .bar-value {
   position: absolute;
-  right: 6px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 9px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   color: var(--text-primary);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7), 0 0 10px currentColor;
   z-index: 1;
 }
 
@@ -209,10 +229,11 @@ body {
 .bar-scale {
   display: flex;
   justify-content: space-between;
-  font-size: 8px;
+  font-size: 11px;
   color: var(--text-secondary);
-  padding: 0 2px;
-  opacity: 0.6;
+  padding: 0 3px;
+  opacity: 0.7;
+  font-weight: 500;
 }
 
 /* Subtle animation for the bars */
@@ -249,4 +270,46 @@ body {
     var(--upload-start) 100%
   );
   background-size: 200% 100%;
+}
+
+/* Resize handle */
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  cursor: ns-resize;
+  -webkit-app-region: no-drag;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(212, 175, 55, 0.1)
+  );
+  transition: background 0.2s ease;
+}
+
+.resize-handle:hover {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(212, 175, 55, 0.3)
+  );
+}
+
+.resize-handle::after {
+  content: '⋯';
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: rgba(212, 175, 55, 0.5);
+  letter-spacing: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.resize-handle:hover::after {
+  opacity: 1;
 }

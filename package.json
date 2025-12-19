@@ -1,6 +1,6 @@
 {
   "name": "net-monitor-lite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Compact, elegant bandwidth throughput monitor for Windows 11",
   "main": "dist-electron/main.js",
   "scripts": {

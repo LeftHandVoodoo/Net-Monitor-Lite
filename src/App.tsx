@@ -64,13 +64,13 @@ function App() {
       {/* Throughput bars */}
       <div className="bars-container">
         <ThroughputBar
-          label="↓"
+          label="Download ↓"
           value={stats.downloadMbps}
           maxValue={6000}
           type="download"
         />
         <ThroughputBar
-          label="↑"
+          label="Upload ↑"
           value={stats.uploadMbps}
           maxValue={6000}
           type="upload"
@@ -84,6 +84,9 @@ function App() {
           <HistoricalGraph history={history} maxValue={6000} />
         </div>
       )}
+
+      {/* Resize handle */}
+      <div className="resize-handle"></div>
     </div>
   )
 }

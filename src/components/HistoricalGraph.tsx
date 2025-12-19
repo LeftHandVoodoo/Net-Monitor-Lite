@@ -10,8 +10,8 @@ function HistoricalGraph({ history, maxValue }: HistoricalGraphProps) {
   const chartPoints = useMemo(() => {
     if (history.length < 2) return { download: '', upload: '' }
 
-    const width = 280
-    const height = 80
+    const width = 420
+    const height = 120
     const pointCount = Math.min(history.length, 60)
     const xStep = width / Math.max(pointCount - 1, 1)
 
@@ -46,7 +46,7 @@ function HistoricalGraph({ history, maxValue }: HistoricalGraphProps) {
 
   return (
     <div className="historical-graph">
-      <svg width="280" height="80" className="graph-svg">
+      <svg width="420" height="120" className="graph-svg">
         <defs>
           <linearGradient id="download-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="var(--download-start)" stopOpacity="0.3" />
@@ -62,7 +62,7 @@ function HistoricalGraph({ history, maxValue }: HistoricalGraphProps) {
         {chartPoints.download && (
           <>
             <polyline
-              points={`0,80 ${chartPoints.download} 280,80`}
+              points={`0,120 ${chartPoints.download} 420,120`}
               fill="url(#download-gradient)"
               stroke="var(--download-start)"
               strokeWidth="2"
@@ -75,7 +75,7 @@ function HistoricalGraph({ history, maxValue }: HistoricalGraphProps) {
         {chartPoints.upload && (
           <>
             <polyline
-              points={`0,80 ${chartPoints.upload} 280,80`}
+              points={`0,120 ${chartPoints.upload} 420,120`}
               fill="url(#upload-gradient)"
               stroke="var(--upload-start)"
               strokeWidth="2"
@@ -85,8 +85,8 @@ function HistoricalGraph({ history, maxValue }: HistoricalGraphProps) {
         )}
 
         {/* Grid lines */}
-        <line x1="0" y1="40" x2="280" y2="40" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="2,2" />
-        <line x1="0" y1="80" x2="280" y2="80" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <line x1="0" y1="60" x2="420" y2="60" stroke="rgba(212,175,55,0.15)" strokeWidth="1" strokeDasharray="3,3" />
+        <line x1="0" y1="120" x2="420" y2="120" stroke="rgba(212,175,55,0.25)" strokeWidth="1" />
       </svg>
 
       <div className="graph-stats">

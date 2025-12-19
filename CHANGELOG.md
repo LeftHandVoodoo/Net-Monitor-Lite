@@ -13,9 +13,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Historical graph showing 60-second bandwidth trend
 - SVG-based visualization with gradient fills for download/upload
 - Peak speed indicators in expanded view
-- Smooth window resize animation between compact (280×110) and expanded (300×320) modes
+- Smooth window resize animation between compact (400×200) and expanded (450×420) modes
 - Window now resizable with min/max constraints
 - ESLint configuration and dependencies for code quality
+- Python launcher script (`run.py`) for easy startup
+
+### Changed
+
+- **Color theme**: Revamped to elegant gold and brown color scheme
+- **Window size**: Increased from 280×110 to 400×140 (compact), 300×320 to 450×400 (expanded)
+- **Polling rate**: Faster updates at 250ms (was 1000ms)
+- **Bar size**: Increased from 18px to 28px height
+- **Font sizes**: All text increased for better readability (11px → 14px base)
+- **Download bars**: Gold gradient (#FFD700 → #DAA520)
+- **Upload bars**: Bronze/copper gradient (#CD7F32 → #8B4513)
+- **Graph dimensions**: Increased to 420×120 (was 280×80)
 
 ### Fixed
 
