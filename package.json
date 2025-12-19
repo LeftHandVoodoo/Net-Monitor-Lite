@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
+    "build:dir": "tsc && vite build && electron-builder --win dir",
     "preview": "vite preview",
     "electron:dev": "concurrently \"vite\" \"electron .\"",
     "lint": "eslint . --ext ts,tsx"
